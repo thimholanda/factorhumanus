@@ -100,7 +100,7 @@ function isMobileDevice()
                     <!-- <p>Entre em contato para mais informações:</p> -->
                     <img width="190" src="./assets/f/fhs.svg" alt="Factor Humanus Scientia">
                     <p>+55 (11) 3284-2002</p>
-                    <p><a href="mailto:faleconosco@factorhumanus.com">faleconosco@factorhumanus.com</a></p>
+                    <p><a href="mailto:contactus@factorhumanus.com">contactus@factorhumanus.com</a></p>
                     <p class="txt-co4">Rua Jerônimo da Veiga, 45, 1º andar</p>
                     <p class="txt-co5">Itaim - São Paulo - Brasil</p>
                     <p><small style="font-size: .6rem; margin-top: 20px; display: inline-block;">Copyright Factor Humanus Scientia © <?= Date('Y') ?></small></p>
