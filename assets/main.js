@@ -52,6 +52,8 @@ $(window).on("load", () => {
 $("document").ready(function () {
   if (isEnglish) {
     $(".btn-contact").html("SEND");
+    $(".txt-email").html("contactus@factorhumanus.com");
+    $(".txt-email").attr("href", "mailto:contactus@factorhumanus.com");
     $(".phphone").attr("placeholder", "PHONE");
     $(".phname").attr("placeholder", "NAME");
 
