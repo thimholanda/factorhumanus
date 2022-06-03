@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Background</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="main.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js" integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ==" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/EasePack.min.js" integrity="sha512-Nz9JbLcdtLEsVUgGmu4depkCU2Xp+6iFNBLOa4HpM/PZtUgvLib9BdAVJX2IpH7UolpCSrvLR6dPEjSY4jDk0A==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.2.3/vivus.min.js" integrity="sha512-gnB/D2sH1xTbeOWT7tZit/RGMaRC5nmtQIsg1i8h7hUmsUw/4hrYPmAS69YNhkLYBRdLt5CQ+27e0lof28kHTQ==" crossorigin="anonymous"></script>
+		<style>
+			body{
+				overflow: hidden;
+			}
+            .container-power-section{
+				position: absolute;
+				left: 0vw;
+				top: 0;
+				width: 220vw;
+				height: 100vh;
+				overflow: hidden;
+				/* animation: normal slideToRight 3s; */
+			}
+
+			@keyframes slideToRight{
+				from{left: 0;}
+				to{left: -100vw;}
+			}
+
+			.container{
+				width: 140vw;
+				height: 100vh;
+				background: rgba(108,184,211,.5);
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			.second-container{
+				background: url('./assets/background-fade.png') no-repeat right ;				
+				left: auto;
+				right: 0;
+			}
+
+			#container-shade{
+				position: absolute;
+			}
+
+			.overlay{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-color: rgba(0,0,0, .9);
+				background: radial-gradient(rgba(0,0,0,.6) 0%, rgba(0,0,0,1) 100%);
+				mix-blend-mode: darken;
+			}
+			.overlay-color{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: rgb(40,54,119);
+				background: linear-gradient(180deg, rgba(40,54,119,1) 0%, rgba(108,184,211,1) 50%, rgb(255, 254, 253) 100%);
+				mix-blend-mode: color;
+			}
+
+			.content{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100vw;
+				height: 100vh;
+				z-index: 1;
+			}
+
+			.content-right{
+				left: auto !important;
+				right: 0;
+				z-index: 1;
+			}
+
+			.egg{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			.circles_class{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				opacity: 1;
+				width: 180%;
+				height: 180%;
+				stroke-dashoffset: 4000;
+				stroke-dasharray: 4000;
+				animation: svganimation 10s ease-in-out forwards;
+			}
+
+			@keyframes svganimation{
+				0% {
+					stroke-dashoffset: 4000;
+				}
+				70%{
+					stroke-dashoffset: 2000;
+				}
+				100%{
+					stroke-dashoffset: 0;
+				}
+			}
+
+			.line{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translateY(-50%, -50%);
+				height: 2px;
+				width: 0vw;
+				background: white;
+				z-index: 4;
+			}
+
+			.line-2{
+				left: 0;
+			}
+
+			#cut-egg{
+				position: absolute;
+				top: 51%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+
+				
+			}
+
+        </style>
+	</head>
+	<body style="position: relative; width: 100%; height: 100vh;">
+
+
+		
+		<div class="container-power-section">
+
+			<div class="container first-container">
+
+				<div class="line line-1"></div>
+
+				<div class="content">
+					<img width="180" class="egg" src="./assets/egg-texture.png" alt="FHS">
+					<svg version="1.1" class="circles_class" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 1042.84 1042.84" style="enable-background:new 0 0 1042.84 1042.84;" xml:space="preserve">
+					<style type="text/css">
+						.st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+						.st1{opacity:0.8667;fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+						.st2{opacity:0.7333;fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+						.st3{opacity:0.6;fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+						.st4{opacity:0.4667;fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+						.st5{opacity:0.3333;fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+						.st6{opacity:0.2;fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+					</style>
+					<g>
+						<path class="st0" d="M588.07,566.36c-14.44,21.38-38.91,35.44-66.65,35.44c-44.39,0-80.38-35.99-80.38-80.38
+							s35.99-80.38,80.38-80.38c26.67,0,50.31,12.99,64.93,32.99"/>
+						<path class="st1" d="M653.51,600.09c-26.83,44.95-75.94,75.05-132.09,75.05c-84.9,0-153.72-68.82-153.72-153.72
+							S436.52,367.7,521.42,367.7c61.86,0,115.19,36.54,139.57,89.22"/>
+						<path class="st2" d="M701.91,659.2c-41.49,54.27-106.9,89.28-180.49,89.28c-125.4,0-227.06-101.66-227.06-227.06
+							s101.66-227.06,227.06-227.06c82.84,0,155.32,44.36,194.97,110.62"/>
+						<path class="st3" d="M753.22,712.5c-55.1,66.76-138.48,109.32-231.8,109.32c-165.91,0-300.4-134.49-300.4-300.4
+							s134.49-300.4,300.4-300.4c93.32,0,176.7,42.55,231.8,109.32"/>
+						<path class="st4" d="M842.46,712.87c-65.25,109.18-184.61,182.29-321.04,182.29c-206.41,0-373.74-167.33-373.74-373.74
+							s167.33-373.74,373.74-373.74c150.52,0,280.26,88.98,339.48,217.21"/>
+						<path class="st5" d="M880.58,787.71C799.11,897.41,668.57,968.5,521.42,968.5c-246.92,0-447.08-200.16-447.08-447.08
+							S274.5,74.34,521.42,74.34c169.75,0,317.41,94.61,393.12,233.97"/>
+						<path class="st6" d="M967.51,789.6c-91.06,151.15-256.77,252.24-446.09,252.24C234,1041.84,1,808.84,1,521.42S234,1,521.42,1
+							C683.09,1,827.55,74.72,923,190.38"/>
+						<path class="st6" d="M923,190.38c27.84,33.73,51.51,71.04,70.23,111.12"/>
+					</g>
+					<g>
+					</g>
+					<g>
+					</g>
+					<g>
+					</g>
+					<g>
+					</g>
+					<g>
+					</g>
+					<g>
+					</g>
+					<g>
+					</g>
+					<g>
+					</g>
+					<g>
+					</g>
+					<g>
+					</g>
+					<g>
+					</g>
+					<g>
+					</g>
+					<g>
+					</g>
+					<g>
+					</g>
+					<g>
+					</g>
+					</svg>
+				</div>
+				
+				<div id="container-shade"></div>
+				<div class="overlay"></div>
+				<div class="overlay-color"></div>
+			</div>
+
+			<div class="container second-container">
+				<div class="content content-right">
+					<div class="line line-2"></div>
+					<object id="cut-egg" width="40%" height="auto" data="./assets/ovo-partido.svg" ></object>
+				</div>
+				
+			</div>
+
+		</div>
+
+		<script type="text/javascript">
+
+			const vivus = new Vivus('cut-egg', {
+				start: 'manual'
+			});
+			
+			$('document').ready(function(){
+
+				// egg infinite loop
+				let tl = gsap.timeline({repeat: -1, yoyo: true});
+				tl.to(".egg", {y: -20, duration: 1});
+
+				// container animation
+				let container_timeline = gsap.timeline({repeat: 0});
+				container_timeline.to('.container-power-section', {x: '-120vw', duration: 3, ease:'power4.out', delay: 4 });
+				container_timeline.to('.line-1', {width: '50vw', duration: 3, ease:'power0.easeNone', delay: 0 }, "<-1");
+				container_timeline.to('.line-2', {width: '50vw', duration: 3, ease:'power4.out', delay: 0 }, "<2.7");
+
+				setTimeout(()=>{
+					vivus.play();
+				}, 7200)
+				
+			});
+
+
+		</script>
+		
+
+		<script id="vertexShader" type="x-shader/x-vertex">
+
+			varying vec2 vUv;
+
+			void main()	{
+
+				vUv = uv;
+
+				gl_Position = vec4( position, 1.0 );
+
+			}
+
+		</script>
+
+		
+
+		<script id="fragmentShader" type="x-shader/x-fragment">
+
+			varying vec2 vUv;
+
+			uniform float time;
+
+			void main()	{
+
+				vec2 p = - 2.8 + 8.0 * vUv;
+				float a = time * 100.0;
+				float d, e, f, g = 1.0 / 100.0 ,h ,i ,r ,q;
+
+				e = 400.0 * ( p.x * 0.5 + 0.5 );
+				f = 400.0 * ( p.y * 0.5 + 0.5 );
+				i = 200.0 + sin( e * g + a / 150.0 ) * 20.0;
+				d = 300.0 + cos( f * g / 2.0 ) * 18.0 + cos( e * g ) * 7.0;
+				r = sqrt( pow( abs( i - e ), 2.0 ) + pow( abs( d - f ), 2.0 ) );
+				q = f / r;
+				e = ( r * cos( q ) ) - a / 2.0;
+				f = ( r * sin( q ) ) - a / 2.0;
+				d = sin( e * g ) * 176.0 + sin( e * g ) * 164.0 + r;
+				h = ( ( f + d ) + a / 2.0 ) * g;
+				i = cos( h + r * p.x / 1.3 ) * ( e + e + a ) + cos( q * g * 6.0 ) * ( r + h / 3.0 );
+				h = sin( f * g ) * 144.0 - sin( e * g ) * 212.0 * p.x;
+				h = ( h + ( f - e ) * q + sin( r - ( a + h ) / 7.0 ) * 10.0 + i / 4.0 ) * g;
+				i += cos( h * 2.3 * sin( a / 350.0 - q ) ) * 184.0 * sin( q - ( r * 4.3 + a / 12.0 ) * g ) + tan( r * g + h ) * 184.0 * cos( r * g + h );
+				i = mod( i / 5.6, 256.0 ) / 64.0;
+				if ( i < 0.0 ) i += 4.0;
+				if ( i >= 2.0 ) i = 4.0 - i;
+				d = r / 350.0;
+				d += sin( d * d * 8.0 ) * 0.52;
+				f = ( sin( a * g ) + 1.0 ) / 2.0;
+				gl_FragColor = vec4( vec3( f * i / 1.6, i / 2.0 + d / 13.0, i ) * d * p.x + vec3( i / 2.3 + d / 8.0, i / 2.0 + d / 18.0, i ) * d * ( 1.0 - p.x ), 1.0 );
+
+			}
+
+		</script>
+
+		<script type="module">
+
+			import * as THREE from '../build/three.module.js';
+
+			let camera, scene, renderer;
+
+			let uniforms;
+
+			init();
+			animate();
+
+			function init() {
+
+				const container = document.getElementById( 'container-shade' );
+
+				camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+
+				scene = new THREE.Scene();
+
+				const geometry = new THREE.PlaneGeometry( 2, 2 );
+
+				uniforms = {
+					time: { value: 1.0 }
+				};
+
+				const material = new THREE.ShaderMaterial( {
+
+					uniforms: uniforms,
+					vertexShader: document.getElementById( 'vertexShader' ).textContent,
+					fragmentShader: document.getElementById( 'fragmentShader' ).textContent
+
+				} );
+
+				const mesh = new THREE.Mesh( geometry, material );
+				scene.add( mesh );
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				container.appendChild( renderer.domElement );
+
+				onWindowResize();
+
+				window.addEventListener( 'resize', onWindowResize );
+
+			}
+
+			function onWindowResize() {
+
+				const shadeContainer = document.querySelector('.first-container');
+				// renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setSize( shadeContainer.offsetWidth, shadeContainer.offsetHeight );
+
+			}
+
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				uniforms[ 'time' ].value = performance.now() / 1000;
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+
+	</body>
+</html>

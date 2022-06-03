@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FHS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <style>
+        #container,
+        #container>div,
+        #base-container,
+        #base-container>div 
+        {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        .dusk{
+            background: rgb(2, 0, 36);
+            background: linear-gradient(180deg, rgba(79, 145, 164, 1) 0%, rgba(236, 160, 98, 1) 100%);
+        }
+
+        .opening-logo{
+            position: absolute;
+            height: 100px;
+            top: 40px;
+        }
+
+        .opening-logo-fhs{
+            left: 40px;  
+        }
+
+        .opening-logo-idone{
+            right: 40px;  
+        }
+
+        .video-container{
+            transform: translateZ(0);
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            overflow: hidden;
+            background-color: black;
+            opacity: 0;
+        }
+
+        .video-aspect{
+            padding-bottom: 56.25%;
+        }
+
+        video{
+            position: absolute;
+            width: 100%;
+            border: none;
+            top: 47%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .egg{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .egg:hover{
+            opacity: .7;
+        }
+
+        .bg-dusk-image{
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url(./assets/g/background.jpg);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <!-- <div class="dusk"></div> -->
+        <div class="bg-dusk-image"></div>
+    </div>
+
+    <img width="180" class="egg" src="./assets/egg-texture.png" alt="FHS">
+
+    
+    <div style="display: none;" class="video-container video-container-metodology">
+        <video class="video-metodology" src="./assets/videos/video-manifesto-v4.mp4" playsinline controlslist="nodownload"></video>
+    </div>
+
+    <!-- <img class="opening-logo opening-logo-fhs" src="./assets/f/fhs.svg">
+    <img class="opening-logo opening-logo-idone" src="./assets/f/idone.svg"> -->
+
+    <script src="./assets/gsap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        let pulse_loop;
+        function pulse(el){
+            const element = el;
+            pulse_loop = gsap.timeline({repeat: -1, yoyo: true});
+            pulse_loop.to(element, { scale: '-=.1', duration: 2, ease: Power1.easeOut});
+            pulse_loop.to(element, { scale: '+=.1', duration: 2, ease: Power1.easeIn});
+        }
+        pulse('.egg');
+
+        $(document).on('click', '.egg', function(e){
+            let transitionMetodologyTimeline = gsap.timeline({repeat: 0});
+            $('.video-metodology')[0].currentTime = 0;
+            $('.video-metodology')[0].play();
+            pulse_loop.kill();
+            transitionMetodologyTimeline.to('.egg', {scale: .4, opacity: 0, duration: .02});
+            transitionMetodologyTimeline.to('.video-container-metodology', {display: 'block', opacity: 1, duration: 3}, '<');
+            
+        });
+
+        $('.video-metodology')[0].onended = function(e){
+            
+            let transitionMetodologyTimeline = gsap.timeline({repeat: 0});
+            transitionMetodologyTimeline.to('.video-container-metodology', {display: 'none', opacity: 0, duration: .5});
+            transitionMetodologyTimeline.to('.egg', {scale: 1, opacity: 1, duration: .5, onComplete: function(){
+                pulse('.egg');
+            }}, '<');
+            
+        }
+        
+    </script>
+
+</body>
+
+</html>
+

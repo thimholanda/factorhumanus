@@ -1,0 +1,20 @@
+<svg version="1.1" id="timeline-lines" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 3840 1080" style="enable-background:new 0 0 3840 1080;" xml:space="preserve">
+<style type="text/css">
+	.timeline-line{fill:none;stroke:#FFFFFF;stroke-width:1;stroke-miterlimit:10;}
+</style>
+<g>
+	<path class="timeline-line timeline-line-1" d="M3845.5,647c-1523,452-2534-268-3851-201"/>
+	<path class="timeline-line timeline-line-2" d="M3845.5,639C2290,1065.2,1403.4,336.1-5.5,481.3"/>
+	<path class="timeline-line timeline-line-3" d="M3845.5,631C2257.4,1031.4,1495.3,293.2-5.5,516.6"/>
+	<path class="timeline-line timeline-line-4" d="M3845.5,623C2224.9,997.6,1587.2,250.3-5.5,551.9"/>
+	<path class="timeline-line timeline-line-5" d="M3845.5,615C2192.3,963.8,1679.1,207.4-5.5,587.1"/>
+	<path class="timeline-line timeline-line-6" d="M3845.5,607C2159.8,930,1771,164.5-5.5,622.4"/>
+	<path class="timeline-line timeline-line-7" d="M3845.5,599C2127.2,896.1,1863,121.6-5.5,657.7"/>
+	<path class="timeline-line timeline-line-8" d="M3845.5,591C2094.7,862.3,1954.9,78.7-5.5,693"/>
+	<path class="timeline-line timeline-line-9" d="M3845.5,583C2062.1,828.5,2046.8,35.8-5.5,728.2"/>
+	<path class="timeline-line timeline-line-10" d="M3845.5,575C2029.6,794.7,2138.7-7.1-5.5,763.5"/>
+	<path class="timeline-line timeline-line-11" d="M3845.5,567C1997,760.9,2230.6-50-5.5,798.8"/>
+	<path class="timeline-line timeline-line-12" d="M3845.5,559c-1881,168-1523-652-3851,275"/>
+</g>
+</svg>

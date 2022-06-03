@@ -1,0 +1,12 @@
+{
+    "name": "joint/com.fhsx",
+    "require": {
+        "phpmailer/phpmailer": "^6.5"
+    },
+    "authors": [
+        {
+            "name": "Joint Design",
+            "email": "thiago.holanda@jointdesign.com.br"
+        }
+    ]
+}

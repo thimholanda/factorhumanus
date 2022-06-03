@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FHS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="main.css">
+    <link type="text/css" rel="stylesheet" href="./fonts/stylesheet.css">
+    
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Akkurat', sans-serif;
+        }
+
+        body {
+            background-color: transparent;
+            color: #000;
+            overflow: hidden;
+        }
+
+        #container,
+        #container>div,
+        #base-container,
+        #base-container>div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        #fast-track {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 100;
+            background: rgb(40, 54, 119);
+            background: linear-gradient(180deg, rgba(40, 54, 119, 1) 0%, rgba(108, 184, 211, 1) 50%, rgba(240, 171, 102, 1) 100%);
+        }
+
+        #container img {
+            width: 128px;
+            cursor: pointer;
+            transition: opacity .2s;
+        }
+
+        #fast-track {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 2000;
+            background: url(./assets/g/background.jpg);
+            /* background: rgb(40, 54, 119);
+            background: linear-gradient(180deg, rgba(40, 54, 119, 1) 0%, rgba(108, 184, 211, 1) 50%, rgba(240, 171, 102, 1) 100%); */
+        }
+
+        .day {
+            background: rgb(2, 0, 36);
+            background: linear-gradient(180deg, rgba(31, 83, 131, 1) 0%, rgba(159, 233, 255, 1) 100%);
+        }
+
+        .dusk,
+        .dusk-last {
+            background: rgb(2, 0, 36);
+            background: linear-gradient(180deg, rgba(79, 145, 164, 1) 0%, rgba(236, 160, 98, 1) 100%);
+        }
+
+        .night {
+            background: rgb(2, 0, 36);
+            background: linear-gradient(180deg, rgba(2, 0, 36, 1) 40%, rgba(67, 157, 241, 1) 100%);
+        }
+
+        .dawn {
+            background: rgb(2, 0, 36);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 1) 100%);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h1 div {
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .id-one-logo {
+            width: 500px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 1000;
+        }
+
+        .egg-sliced {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width: 200px;
+            height: 255px;
+            left: 50%;
+            /* top: 50%; */
+            top: 120%;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            /* z-index: 100; */
+        }
+
+        .egg-sliced img {
+            align-self: flex-start;
+            width: 100%;
+            position: absolute;
+            ;
+        }
+
+        #egg-sliced-top {
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .title-one, .title-two {
+            width: 100%;
+            max-width: 700px;
+            color: white;
+            font-weight: 200;
+            font-size: 2.2rem;
+            line-height: 2.8rem;
+            letter-spacing: 1px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(.1);
+        }
+
+        .title-one span, .title-two span{
+            opacity: 0;
+            display: inline-block;
+            transform: translate(0, 700%) scale(.1);
+        }
+
+        .logo-fast-track{
+            display: block;
+            position: absolute;
+            height: 80px;
+            top: 40px;
+            left: 30px;
+            opacity: 1;
+            z-index: 3000;
+        }
+
+        .logo-idone-fast{
+            top: auto;
+            bottom: 100px;
+        }
+
+        .opening-logo{
+            display: block;
+            position: absolute;
+            height: 150px;
+            top: 50%;
+            opacity: 0;
+            z-index: 100;
+        }
+        .opening-logo-fhs{
+            left: 50%;  
+            transform: translate(-50%, -50%) scale(.1);
+        }
+        .opening-logo-idone{
+            right: 50%;  
+            transform: translate(50%, -50%) scale(.1);
+        }
+
+        .egg-full{
+            position: absolute;
+            height: 80px;
+            top: 50%;
+            opacity: 0;
+            z-index: 1111;
+        }
+
+        .egg-full-small{
+            height: 50px;
+        }
+
+        .egg-full-left{
+            left: 50%;
+            transform: translate(-50%, -50%) scale(.2);
+        }
+
+        .egg-full-right{
+            right: 50%;
+            transform: translate(50%, -50%) scale(.2);
+        }
+
+        .egg-full-button{
+            opacity: 1;
+            height: 80px;
+        }
+
+        button{
+            border: none;
+            background-color: transparent;
+            transition: opacity .2s;
+
+        }
+
+        button:hover{
+            opacity: .5;
+        }
+
+        button img{
+            display: block;
+            width: 100%;
+        }
+
+        .button-fastrack{
+            position: absolute;
+            right: 30px;
+            bottom: -200px;
+            width: 70px;
+            z-index: 3001;
+        }
+
+        .button-close-fastrack{
+            width:  100px;
+            position: absolute;
+            right: 30px;
+            top: 10px;
+            transform: rotateX(150deg);
+            animation: rotateButton 4s linear infinite;
+            backface-visibility: visible;
+            z-index: 100;
+        }
+        
+        @keyframes rotateButton {
+            from{
+                transform: rotateY(0deg);
+            }
+            to{
+                transform: rotateY(360deg);
+            }
+        }
+        
+        .egg-full-button{
+            width: 50px;
+            height: 70px;
+            position: relative;
+            z-index: 1;
+            transition: all .3s linear;
+        }
+
+        .egg-full-button:hover{
+            opacity: 1 !important;
+            transform: scale(.95);
+        }
+
+        .container-fast-track-menu{
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            padding-right: 50px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .container-fast-track-menu ul{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+
+        .container-fast-track-menu ul li{
+            display: flex;
+            font-weight: 300;
+            color: white;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .container-fast-track-menu ul li h2{
+            font-weight: 300;
+            margin-bottom: 0;
+            margin-right: 12px;
+            position: relative;
+            left: 0;
+            opacity: .8;
+            transition: all 1s ease-out;
+            font-size: 1.1rem;
+            line-height: 1.3rem;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .container-fast-track-menu ul li h2:hover{
+            opacity: 1;
+        }
+
+        .container-fast-track-menu ul li a{
+            display: inline-block;
+            color: white;
+            display: block;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all .3s linear;
+        }
+
+        .container-fast-track-menu ul li a:hover{
+            opacity: .5;
+        }
+
+        .container-fast-track-menu ul li a img{
+            max-width: 120px;
+            margin-top: 40px;
+        }
+
+        .potency-block{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            transition: all 3s;
+            background-color: transparent;
+        }
+
+        .egg-energy{
+            width: 200px;
+            height: 255px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(.1);
+        }
+
+        .egg-energy img{
+            width: 100%;
+            display: block;
+            position: absolute;
+        }
+
+        .po-dark-bg{
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, .8);
+            opacity: 0;
+        }
+
+        .po-egg-blur{
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 135% !important;
+        }
+
+        .egg-loader{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            clip-path: ellipse(47% 46% at 50% 50%);
+        }
+
+        .egg-loader-bar{
+            width: 100%;
+            height: 0%;
+            background-color: white;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            box-shadow:
+                0 0 15px 2px #fff,  /* inner white */
+                0 0 25px 15px #fff, /* middle magenta */
+                0 0 35px 27px #0ff; /* outer cyan */
+        }
+        
+        .container-particles-potency{
+            width: 100%;
+            height: 100vh;
+            opacity: 0;
+            background-color: black;
+            position: absolute;
+        }
+
+        .video-container{
+            transform: translateZ(0);
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            overflow: hidden;
+            background-color: black;
+            opacity: 0;
+        }
+
+        .video-aspect{
+            padding-bottom: 56.25%;
+        }
+
+        video{
+            position: absolute;
+            width: 100%;
+            border: none;
+            top: 48%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .egg{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(.5);
+            cursor: pointer;
+            transition: all .3s;
+            display: none;
+            opacity: 0;
+        }
+
+        .bg-dusk-image{
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url(./assets/g/background.jpg);
+        }
+
+        .egg-blur{
+            width: 400px;
+            position: absolute;
+            left: 50%;
+            top: 53%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            opacity: 0;
+            scale: .1;
+            display: none;
+        }
+
+        .egg-blur img{
+            width: 100%;
+        }
+
+        .container-quote{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1002;
+        }
+
+        .container-quote-potency{
+            position: absolute;
+            left: 50%;
+            top: 25%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1002;
+            display: none;
+        }
+
+        .container-quote img{
+            width: 300px;
+            display: inline-block;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: scale(.4);
+        }
+
+        #quote{
+            color: white;
+            font-weight: 300;
+            font-size: 1.6rem;
+            line-height: 4rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-align: center;
+            opacity: 0;
+        }
+
+        #quote-potency{
+            color: white;
+            font-weight: 300;
+            font-size: 1.6rem;
+            line-height: 4rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-align: center;
+            opacity: 0;
+        }
+
+        .title-blur{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            /* opacity: 0; */
+            color: white;
+            font-weight: 300;
+            font-size: 1.6rem;
+            line-height: 4rem;
+            letter-spacing: 4px;
+            display: flex;
+            flex-direction: column;
+            z-index: 1111;
+            align-items: center;
+            /* filter: blur(10px); */
+            
+        }
+
+        .title-blur img{
+            width: 300px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .title-part-1{
+            margin-left: -1000px;
+            white-space: nowrap;
+        }
+
+        .title-part-2{
+            margin-right: -1000px;
+            white-space: nowrap;
+        }
+
+        #myframe{
+            z-index: 1000;
+            left: 0; top: 0; position: absolute; width: 100%; height: 100vh;
+        }  
+        
+        #container-frame{
+            z-index: 1000;
+            left: 0; top: 0; position: absolute; width: 100%; height: 100vh;
+        }  
+
+    </style>
+    
+</head>
+
+<body>
+
+
+    
+    <div style="display: none;" id="particles-potency" class="container-particles-potency"></div>
+
+    <div id="base-container">
+        <!-- <div class="dusk"></div> -->
+        <div class="bg-dusk-image"></div>
+    </div>
+
+    <div id="container">
+        <!-- <div class="dusk"></div>
+        <div style="opacity: 0;" class="day"></div>
+        <div style="opacity: 0;" class="night"></div>
+        <div style="opacity: 0;" class="dawn"></div>
+        <div style="opacity: 0;" class="dusk-last"></div> -->
+    </div>
+
+    <div style="display: none;" id="fast-track">
+
+        <!-- <button class="button-close-fastrack"><img src="./assets/ovinhos.svg" alt="Close fastrack"></button> -->
+
+        <div class="container-fast-track-menu">
+
+            <img class="logo-fast-track logo-fhs-fast" src="./assets/f/fhs.svg">
+            <img class="logo-fast-track logo-idone-fast" src="./assets/f/idone.svg">
+
+            <ul>
+                <li>
+                    <h2>HOME</h2>
+                </li>
+                <li>
+                    <h2>POTÊNCIA</h2>
+                </li>
+                <li>
+                    <h2>METODOLOGIA</h2>
+                </li>
+                <li>
+                    <h2>APLICAÇÃO</h2>
+                </li>
+                <li>
+                    <h2>RESTITUIÇÕES</h2>
+                </li>
+                <li>
+                    <h2>RESULTADOS</h2>
+                </li>
+                <li>
+                    <h2>LINHA DO TEMPO</h2>
+                </li>
+                <li>
+                    <h2>MANIFESTO</h2>
+                </li>
+                <li>
+                    <h2>CONTATO</h2>
+                </li>
+                <!-- <li>
+                    <a href="https://www.factorhumanus.com/notre-dame-project" target="_blank" alt="Notre Dame"><img src="./assets/f/projeto-notre-dame.png" alt="Projeto Notre Dame"></a>
+                </li>
+                <li>
+                    <a href="https://fatorpotencialhumano.org/a-ciencia/" target="_blank">FATOR POTENCIAL HUMANO CIÊNCIA</a>
+                </li>
+                <li>
+                    <a href="https://fatorpotencialhumano.org/autores/" target="_blank">AUTORES</a>
+                </li> -->
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- <h1 class="title-one"><strong style="font-weight: bold;"><span></span>ID ONE<sup>®</sup> HUMAN FACTOR:<span></strong>
+        <span>RESTITUI</span> <span>POTÊNCIA</span> <span>PRÓPRIA</span> <span>QUE</span> <span>CONSTITUI</span> <span>O</span> <span>INDIVÍDUO,</span> <span>TIME</span> <span>E</span> <span>ORGANIZAÇÃO</span>
+    </h1> -->
+
+    <!-- <h1 class="title-blur">
+        <img src="./assets/g/idone-clean.svg" alt="ID One">
+        <span class="title-part-1">RESTITUI POTÊNCIA PRÓPRIA QUE CONSTITUI</span>
+        <span class="title-part-2">O INDIVÍDUO, O TIME E A ORGANIZAÇÃO</span>
+    </h1> -->
+
+    <div class="container-quote">
+        <img class="container-quote-logo" src="./assets/g/idone-clean.svg" alt="ID One">
+        <div id="quote">RESTITUI POTÊNCIA PRÓPRIA QUE CONSTITUI O INDIVÍDUO, O TIME E A ORGANIZAÇÃO</div>
+    </div>
+    
+
+    <!-- <h1 class="title-blur">
+        <img src="./assets/g/idone-clean.svg" alt="ID One">
+        <div class="title-animated" style="max-width: 200px; background-color: red;;">
+            RESTITUI POTÊNCIA PRÓPRIA QUE CONSTITUI O INDIVÍDUO, O TIME E A ORGANIZAÇÃO
+        </div>
+    </h1> -->
+
+    <img class="egg-full egg-full-1 egg-full-right" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-small egg-full-1b egg-full-right" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-2 egg-full-right" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-small egg-full-2b egg-full-right" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-3 egg-full-right" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-small egg-full-3b egg-full-right" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-4 egg-full-right" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-small egg-full-4b egg-full-right" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-5 egg-full-right" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-small egg-full-5b egg-full-right" src="./assets/f/egg-full.png">
+
+    <img class="egg-full egg-full-6 egg-full-left" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-small egg-full-6b egg-full-left" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-7 egg-full-left" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-small egg-full-7b egg-full-left" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-8 egg-full-left" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-small egg-full-8b egg-full-left" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-9 egg-full-left" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-small egg-full-9b egg-full-left" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-10 egg-full-left" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-11 egg-full-left" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-12 egg-full-left" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-13 egg-full-left" src="./assets/f/egg-full.png">
+    <img class="egg-full egg-full-14 egg-full-left" src="./assets/f/egg-full.png">
+    
+
+    <div class="egg-sliced">
+        <img id="egg-sliced-bottom" src="./assets/f/egg-full.png">
+        <img id="egg-sliced-top" src="./assets/egg-3d.png">
+    </div>
+
+    <div class="egg-blur"><img src="./assets/g/ovo-blur.png"></div>
+
+    <div style="display: none;" class="potency-block">
+        <div class="po-dark-bg"></div>
+        <div class="egg-energy">
+            <div class="egg-loader">
+                <div class="egg-loader-bar"></div>
+            </div>
+            <img class="po-egg-outline" src="./assets/f/egg-leaked.png" alt="FHS">
+            <img class="po-egg-blur" src="./assets/f/egg-blur.png" alt="FHS">
+            <img class="po-egg" src="./assets/f/egg-full.png" alt="FHS">
+            
+        </div>
+    </div>
+
+    <img style="display: none;" width="180" class="egg" src="./assets/egg-texture.png" alt="FHS">
+
+    <div class="container-quote-potency">
+        <div id="quote-potency"><strong>POTÊNCIA É PRÓPRIA;</strong><br>NINGUÉM É IGUAL A NINGUÉM</div>
+    </div>
+
+    <div style="display: none;" class="video-container video-container-potency">
+        <video class="video-potency" src="./assets/videos/video-potencia-v3.mp4" playsinline controlslist="nodownload"></video>
+    </div>
+
+    <img class="opening-logo opening-logo-fhs" src="./assets/f/fhs.svg">
+    <img class="opening-logo opening-logo-idone" src="./assets/f/idone.svg">
+
+    <button class="button-fastrack"><img src="./assets/btn-fast-track.png" alt="Menu fastrack"></button>
+
+    <script src="./assets/gsap.min.js"></script>
+    <script src="./vendor/SplitText.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="module">
+
+        import * as THREE from '../build/three.module.js';
+        import { TWEEN } from './jsm/libs/tween.module.min.js';
+        import { TrackballControls } from './jsm/controls/TrackballControls.js';
+        import { CSS3DRenderer, CSS3DSprite } from './jsm/renderers/CSS3DRenderer.js';
+
+        const track =  new Audio('./assets/audio/trilha.mp3');
+
+        function playTrack(){
+            track.play();
+            document.body.removeEventListener('touchstart', playTrack);
+            document.body.removeEventListener('click', playTrack);
+        }
+
+        document.body.addEventListener('touchstart', playTrack);
+        document.body.addEventListener('click', playTrack);
+
+
+        $(window).on('load', function(){
+           
+        let once = true;
+
+        function handlePotencyContentOpening(){
+            track.pause();
+
+            $('.potency-block').css('display', 'block');
+            $('.container-particles-potency').css('display', 'block');
+            
+            let timelinePotency = gsap.timeline({ repeat: 0 });
+            timelinePotency.to('#container', {opacity: 0, duration: 1, delay: 0});
+            // timelinePotency.to('.button-fastrack', {opacity: 0, duration: 1, delay: 0},'<');
+            timelinePotency.to('.egg-energy', {opacity: 1, scale: 1, duration: 1, ease: Power2.easeIn}, '<');
+            timelinePotency.to('.container-particles-potency', {opacity: 1, duration: 2, ease: Power2.easeIn}, '<');
+            timelinePotency.to('.po-egg', {opacity: 0, duration: 1, ease: Power2.easeIn, onComplete: function(){
+                animatePartcilesPotency();
+            }});
+            
+            shine('.po-egg-blur');
+            levitate('.egg-energy');
+        }
+
+        let serieControl = 1;
+        let stopPotency = false;
+
+        function handleParticlesPotencyClick(){
+            const height = serieControl * 50;
+            let eggEnergyBarTimeline = gsap.timeline({repeat: 0});
+            eggEnergyBarTimeline.to('.egg-energy', {scale: .9, duration: .2});
+            eggEnergyBarTimeline.to('.egg-energy', {scale: 1.5, duration: .5, ease: 'elastic.out(2.5,1)'});
+            eggEnergyBarTimeline.to('.egg-loader-bar', {height: `${height}%`, duration: .5, ease: 'back.out(2)'});
+            if(serieControl < 2)
+            {
+                eggEnergyBarTimeline.to('.egg-energy', {scale: 1, duration: .5, ease: 'elastic.out(1,1)'});
+            }else{
+                eggEnergyBarTimeline.to('.egg-energy', {scale: 10, duration: .5, ease: 'elastic.out(1,1)', onComplete: function(){
+                    stopPotency = true;
+                    $('.container-particles-potency').css('display', 'none');
+                    $('.video-container-potency').css('display', 'block');
+                    $('.video-container-potency').css('opacity', '0');
+                    $('.video-potency')[0].play();
+                    $('.video-potency')[0].currentTime = 0;
+
+                    var tl_quote_potency = gsap.timeline(), mySplitTextPotency = new SplitText("#quote-potency", {type:"words,chars"}), 
+                    chars = mySplitTextPotency.chars;
+                    gsap.set("#quote-potency", {perspective: 400});
+                    tl_quote_potency.from(chars, {duration: 2, opacity:0, scale:0, y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:"back", stagger: 0.05}, "+=0");
+                    tl_quote_potency.to(chars, {duration: 3, opacity:0, scale:0, y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:"back", stagger: 0.05, delay: .5, onComplete: function(){
+                        $('.container-quote').css('display', 'none');
+                    }}, "+=0");
+                    tl_quote_potency.pause();
+                    $('#quote-potency').css('opacity', '1');
+                    
+
+                    
+                    eggEnergyBarTimeline.to('.potency-block', {opacity: 0, duration: 2});
+                    eggEnergyBarTimeline.to('.video-container-potency', {opacity: 1, display: 'block', duration: 2}, '<');
+
+                    $('.video-potency')[0].onended = function(e){
+                        eggEnergyBarTimeline.to('.egg', {opacity: 1, scale: 1, display: 'block', duration: .3});
+                        eggEnergyBarTimeline.to('.video-container-potency', {opacity: 0, display: 'none', duration: 1}, '<');
+
+                        eggEnergyBarTimeline.to('.container-quote-potency', {display: 'block', opacity: 1, duration: .8, onComplete: function(){tl_quote_potency.resume();}}, '<');
+                        eggEnergyBarTimeline.to('.egg', {opacity: 0, scale: .3, display: 'none', duration: .2}, '<8');
+                        eggEnergyBarTimeline.to('#container', {opacity: 1, duration: .3, onComplete: function(){
+                            transitionCenterComplete = false;
+                            currentScene = 'main';
+                            animate();
+                            transition();
+                        }}, '<');
+                    }
+                    
+                }});
+            }
+            
+            serieControl++;
+        }
+
+        function startAnimation(){
+
+            let timeline_eggsliced = gsap.timeline({ repeat: 0 });
+
+            // var tl_quote = gsap.timeline(), mySplitText = new SplitText("#quote", {type:"words,chars"}), 
+            // chars = mySplitText.chars;
+            // gsap.set("#quote", {perspective: 400});
+            // tl_quote.from(chars, {duration: 2, opacity:0, scale:0, y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:"back", stagger: 0.05}, "+=0");
+            // tl_quote.to(chars, {duration: 3, opacity:0, scale:0, y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:"back", stagger: 0.05, delay: .5, onComplete: function(){
+            //     $('.container-quote').css('display', 'none');
+            // }}, "+=0");
+            // tl_quote.pause();
+            
+
+            // timeline_eggsliced.to('.egg-sliced', { opacity: 1, top: '50%', duration: 2, onComplete: function(){
+            //     $('#quote').css('opacity', '1');
+            // } });
+
+            // timeline_eggsliced.to('#egg-sliced-top', { opacity: 1, ease: Power1.easeOut, duration: 1 });
+
+            // timeline_eggsliced.to('.opening-logo-fhs', { opacity: 1, duration: .5 });
+            // timeline_eggsliced.to('.opening-logo-fhs', { opacity: 1, left: 110, top: 60, scale: .5, rotation: 0, duration: 3, onComplete: function(){pulse('.opening-logo-fhs');} });
+            // timeline_eggsliced.to('.opening-logo-idone', { opacity: 1, duration: .5 }, '<');
+            // timeline_eggsliced.to('.opening-logo-idone', { opacity: 1, right: 100, top: 60, scale: .55, duration: 3, rotation: 0, onComplete: function(){pulse('.opening-logo-idone');} }, '> + 3');
+            // timeline_eggsliced.to('.container-quote-logo', { opacity: 1, scale: 1, duration: 3 }, '>');
+
+            // timeline_eggsliced.to('.egg-sliced', { opacity: 0, scale: .5, duration: 1, onComplete: function(){
+            //     tl_quote.resume();
+            // }},'<');
+
+            // timeline_eggsliced.to('.container-quote-logo', { opacity: 0, scale: .2, duration: 4 }, '>+5');
+
+            // timeline_eggsliced.to('.egg-sliced', { opacity: 1, scale: 1, duration: 2},'>-.5');
+
+            // timeline_eggsliced.to('.egg-sliced', { rotation: 360, scale: .5, duration: 5},'>');
+
+            // timeline_eggsliced.to('.egg-full-1', { top: '10%', right: '15%', scale: 1, opacity: 1, duration: 2 },'<');
+            // timeline_eggsliced.to('.egg-full-1b', { top: '12%', right: '25%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-2', { top: '40%', right: '18%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-2b', { top: '43%', right: '8%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-3', { top: '60%', right: '5%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-3b', { top: '50%', right: '25%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-4', { top: '75%', right: '23%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-4b', { top: '79%', right: '33%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-5', { top: '90%', right: '40%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-5b', { top: '87%', right: '48%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+
+            // timeline_eggsliced.to('.egg-full-6', { top: '85%', left: '40%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-6b', { top: '75%', left: '48%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-7', { top: '72%', left: '18%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-7b', { top: '66%', left: '11%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-8', { top: '58%', left: '28%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-8b', { top: '49%', left: '37%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-9', { top: '35%', left: '8%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-9b', { top: '28%', left: '16%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-10', { top: '14%', left: '17%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-11', { top: '22%', left: '29%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-12', { top: '8%', left: '42%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-13', { top: '25%', left: '54%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+            // timeline_eggsliced.to('.egg-full-14', { top: '22%', left: '68%', scale: 1, opacity: 1, duration: 2 },'<+.2');
+
+            // timeline_eggsliced.to('.egg-sliced', { opacity: 0, duration: 2},'>-1');
+
+            // timeline_eggsliced.to('.egg-full-left', { top: '53%', left: '50%', scale: .6, opacity: 1, duration: 1 }, '>-1');
+            // timeline_eggsliced.to('.egg-full-right', { top: '53%', right: '50%', scale: .6, opacity: 1, duration: 1 }, '>-1');
+
+            timeline_eggsliced.to('.egg-full', { opacity: 0});
+            
+            timeline_eggsliced.to('.egg-sliced', { scale: '-=0', duration: 1, onComplete: function(){ addRender(); animate(); setTimeout(()=>{transition();}, 200);}}, '<-1.7');
+            timeline_eggsliced.to('.egg-sliced', { opacity: 0, scale: '+=.8', duration: .3, onComplete: function(){$('.egg-sliced').css('display', 'none');} }, '<1.9');
+            timeline_eggsliced.to('.button-fastrack', { bottom: 30, duration: 1, onComplete: function(){pulse('.button-fastrack'); $('.egg-sliced').css('display', 'none');} });
+        }
+
+        pulse('.button-close-fastrack');
+
+        function animateSpan(el){
+            const element = el;
+            const elementSpan = el + ' span';
+
+            let timeline_animate_span = gsap.timeline({ repeat: 0 });
+
+            $(elementSpan).each(function(_,el){
+                timeline_animate_span.to(el, { opacity: 1, y: 0, x:0, scale: 1, duration: 1 }, '< +.2');
+            });
+        }
+
+        function levitate(el){
+            const element = el;
+            let levitate_loop = gsap.timeline({repeat: -1, yoyo: true});
+            levitate_loop.to(element, { y: '+=30', duration: 2, ease: Power1.easeInOut});
+            levitate_loop.to(element, { y: '-=30', duration: 2, ease: Power1.easeInOut});
+        }
+
+        function pulse(el){
+            const element = el;
+            let pulse_loop = gsap.timeline({repeat: -1, yoyo: true});
+            pulse_loop.to(element, { scale: '-=.1', duration: 2, ease: Power1.easeOut});
+            pulse_loop.to(element, { scale: '+=.1', duration: 2, ease: Power1.easeIn});
+        }
+
+        function shine(el){
+            const element = el;
+            let shine_loop = gsap.timeline({repeat: -1, yoyo: true});
+            shine_loop.to(element, { opacity: 0.3, duration: 1, ease: Power1.easeOut});
+            shine_loop.to(element, { opacity: 1, duration: 1, ease: Power1.easeIn});
+        }
+
+        //
+        // potency partciles
+
+            let cameraParticlesPotency, sceneParticlesPotency, rendererParticlesPotency, materialParticlesPotency;
+			let mouseXParticlesPotency = 0, mouseYParticlesPotency = 0;
+
+			let windowHalfXParticlesPotency = window.innerWidth / 2;
+			let windowHalfYParticlesPotency = window.innerHeight / 2;
+            let particlesParticlesPotency = new THREE.Object3D();
+
+            let raycasterParticlesPotency = new THREE.Raycaster();
+			let mouseParticlesPotency = new THREE.Vector2();
+
+            function initPartcilesPotency(){
+                
+                cameraParticlesPotency = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 2, 2000 );
+				cameraParticlesPotency.position.z = 1000;
+
+				sceneParticlesPotency = new THREE.Scene();
+                sceneParticlesPotency.fog = new THREE.FogExp2( 0x000000, 0.001 );
+
+                for ( let i = 0; i < 5000; i ++ ) {
+
+					const x = 2000 * Math.random() - 1000;
+					const y = 2000 * Math.random() - 1000;
+					const z = 2000 * Math.random() - 1000;
+
+                    let position = {
+                        'x' : x,
+                        'y' : y,
+                        'z' : z
+                    }
+
+                    const map = new THREE.TextureLoader().load( './textures/sprites/disc.png' );
+
+				    let opacity = .7;
+				    let size = 20;
+
+                    const material = new THREE.SpriteMaterial( { map: map, color: 0x27364f, depthWrite: false } );
+                    material.map.minFilter = THREE.LinearFilter;
+                    material.opacity = opacity;
+                    const sprite = new THREE.Sprite( material );
+                    sprite.position.set(position.x, position.y, position.z);
+                    sprite.scale.set(size, size, size);
+
+                    if(i <= 2500){
+                        sprite.serie = 1;
+                    } else if(i > 2500){
+                        sprite.serie = 2;
+                    }
+                
+                    particlesParticlesPotency.add(sprite);
+				}
+
+                sceneParticlesPotency.add( particlesParticlesPotency );
+
+				rendererParticlesPotency = new THREE.WebGLRenderer();
+				rendererParticlesPotency.setPixelRatio( window.devicePixelRatio );
+				rendererParticlesPotency.setSize( window.innerWidth, window.innerHeight );
+				document.getElementById('particles-potency').appendChild( rendererParticlesPotency.domElement );
+
+				document.body.addEventListener( 'mousedown', onDocMouseDown );
+				document.body.addEventListener( 'mousemove', onDocMouseMove );
+                window.addEventListener( 'resize', onWindowResizeParticlesPotency );
+            }
+
+            function onWindowResizeParticlesPotency() {
+
+                windowHalfXParticlesPotency = window.innerWidth / 2;
+                windowHalfYParticlesPotency = window.innerHeight / 2;
+
+                cameraParticlesPotency.aspect = window.innerWidth / window.innerHeight;
+                cameraParticlesPotency.updateProjectionMatrix();
+
+                rendererParticlesPotency.setSize( window.innerWidth, window.innerHeight );
+
+            }
+
+            function onDocMouseDown( event ) {
+
+                console.log(currentScene);
+
+                if(currentScene != 'potency') return;
+
+                let mouseX = event.clientX;
+				let mouseY = event.clientY;
+	
+				mouseX = (mouseX / window.innerWidth) * 2 - 1;
+				mouseY = -(mouseY / window.innerHeight) * 2 + 1;
+
+                raycasterParticlesPotency.setFromCamera( mouseParticlesPotency, cameraParticlesPotency );
+
+                mouseParticlesPotency.x = mouseX;
+                mouseParticlesPotency.y = mouseY;
+
+                let intersects = raycasterParticlesPotency.intersectObjects(particlesParticlesPotency.children);
+
+                if(intersects.length > 0 && !intersects[0].object.clicked)
+				{
+                    const selectedSerie = intersects[0].object.serie;
+
+                    for(let i = 0; i < particlesParticlesPotency.children.length; i++){
+                        if(particlesParticlesPotency.children[i].serie === selectedSerie){
+                            particlesParticlesPotency.children[i].clicked = true;
+                            particlesParticlesPotency.children[i].material.opacity = 1;
+                            particlesParticlesPotency.children[i].material.color = new THREE.Color(0xffffff);
+                        }
+                    }	
+                    
+                    handleParticlesPotencyClick();  
+				}
+            }
+
+            function onDocMouseMove( event ) {
+
+                if ( event.isPrimary === false ) return;
+
+                for(let i=0; i<particlesParticlesPotency.children.length; i++)
+                {
+                    if(particlesParticlesPotency.children[i].material.opacity === 1 && !particlesParticlesPotency.children[i].clicked)
+                    {
+                        particlesParticlesPotency.children[i].material.opacity = .7;
+                        particlesParticlesPotency.children[i].material.color = new THREE.Color(0x27364f);
+                    }
+                }
+
+                mouseXParticlesPotency = event.clientX - windowHalfXParticlesPotency;
+                mouseYParticlesPotency = event.clientY - windowHalfYParticlesPotency;
+
+                let mouseX = event.clientX;
+                let mouseY = event.clientY;
+
+                mouseX = (mouseX / window.innerWidth) * 2 - 1;
+                mouseY = -(mouseY / window.innerHeight) * 2 + 1;
+
+                raycasterParticlesPotency.setFromCamera( mouseParticlesPotency, cameraParticlesPotency );
+
+                mouseParticlesPotency.x = mouseX;
+                mouseParticlesPotency.y = mouseY;
+
+                let intersects = raycasterParticlesPotency.intersectObjects(particlesParticlesPotency.children);
+
+                if(intersects.length > 0)
+                {
+                    if(intersects[0].object.material.opacity == .7)
+                    {
+                        intersects[0].object.material.opacity = 1;
+                        intersects[0].object.material.color = new THREE.Color(0xffffff);
+                        if(currentScene == 'potency')
+                        {
+                            document.body.style.cursor = "pointer";
+                        }
+
+                    }
+                                
+                }
+                else
+                {
+                    document.body.style.cursor = "default";
+                }
+
+            }
+
+            function animatePartcilesPotency(once) {
+
+                if(once == true){
+                    requestAnimationFrame( animatePartcilesPotency );
+                    renderPartcilesPotency();
+                    console.log('animate');
+                    once = false;
+                    return;
+                }
+                else{
+
+                    if(stopPotency == false)
+                    {
+                        requestAnimationFrame( animatePartcilesPotency );
+                        renderPartcilesPotency();
+
+                        const time = performance.now();
+
+                        for (let i = 0, l = particlesParticlesPotency.children.length; i < l; i++) {
+
+                            const object = particlesParticlesPotency.children[i];
+                            const scale = Math.sin((Math.floor(object.position.x) + time) * 0.005) * 1 + 22;
+                            object.scale.set(scale, scale, scale);
+
+                        }
+                    }else{
+                        return;
+                    }
+                    
+                }
+
+            }
+
+            function renderPartcilesPotency() {
+
+                const time = Date.now() * 0.00005;
+
+                cameraParticlesPotency.position.x += ( mouseXParticlesPotency - cameraParticlesPotency.position.x ) * 0.05;
+                cameraParticlesPotency.position.y += ( - mouseYParticlesPotency - cameraParticlesPotency.position.y ) * 0.05;
+
+                cameraParticlesPotency.lookAt( sceneParticlesPotency.position );
+
+                rendererParticlesPotency.render( sceneParticlesPotency, cameraParticlesPotency );
+
+            }
+
+            initPartcilesPotency();
+            animatePartcilesPotency(once);
+            startAnimation();
+
+        let camera, scene, renderer;
+        let controls;
+
+        const particlesTotal = 512;
+        const positions = [];
+        const objects = [];
+        let current = 0;
+        let currentScene = 'main';
+        let transitionCenter = false;
+
+        $('.egg-full-button').on('mouseover', function(e){
+            $(this).parent().find('h2').css('left', '0');
+            $(this).parent().find('h2').css('opacity', '1');
+        })
+
+        $('.egg-full-button').on('mouseout', function(e){
+            $(this).parent().find('h2').css('left', '100%');
+            $(this).parent().find('h2').css('opacity', '0');
+        });        
+        
+        $(document).on('click', '.button-fastrack', function(e){
+            
+                        $('<iframe>', {
+            src: 'metodologia.php',
+            style: 'position: absolute; left: 0; right: 0; width: 100%; height: 100vh; display: none; z-index: 2000;',
+            id:  'bodyFrame',
+            frameborder: 0,
+
+            scrolling: 'no'
+            }).appendTo('body');
+
+            $('#bodyFrame').fadeIn();
+
+            
+
+            currentScene = 'main';
+            animate();
+   
+            
+            return;
+            // $('.container-fast-track-menu ul li h2').css('left', '0');
+            // $('.container-fast-track-menu ul li h2').css('opacity', '1');
+
+            console.log($('#fast-track').is(':visible'));
+
+            if($('#fast-track').is(':visible')){
+                $('#fast-track').fadeOut();
+                currentScene = 'main';
+                animate();
+            }
+            else{
+                $('#fast-track').fadeIn('slow', function(){
+                    // $('.container-fast-track-menu ul li h2').css('left', '100%');
+                    // $('.container-fast-track-menu ul li h2').css('opacity', '0');
+                });
+
+                currentScene = 'fast-track';
+                animate();
+                animateFastTrack();
+            }
+            
+        });
+
+    
+        $(document).on('click', '.button-close-fastrack', function(e){
+            $('#fast-track').fadeOut();
+            currentScene = 'main';
+            animate();
+        });
+
+        init();
+
+        function init() {
+
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 5000);
+            camera.position.set(600, 400, 1500);
+            camera.lookAt(0, 0, 0);
+            let angle = 7000;
+            camera.position.z = 1000 * Math.cos(angle) * .6;
+            camera.position.x = 2000 * Math.cos(angle) * .6;
+            camera.position.y = 2000 * Math.sin(angle);
+            camera.fov *= .95;
+            camera.updateProjectionMatrix();
+
+            scene = new THREE.Scene();
+
+            const image = document.createElement('img');
+
+            image.addEventListener('load', function () {
+
+                for (let i = 0; i < particlesTotal; i++) {
+
+                    let img = image.cloneNode();
+                    img.src = "textures/egg-texture.png";
+                    img.className = "egg-main-3d";
+                    const object = new CSS3DSprite(img);
+
+                    object.position.x = 0,
+                    object.position.y = -100,
+                    object.position.z = 0;
+                    scene.add(object);
+
+                    objects.push(object);
+
+                }
+
+            });
+
+            image.src = 'textures/egg-texture.png';
+
+
+            // // Plane group
+
+            // const amountX3 = 16;
+            // const amountZ3 = 32;
+            // const separationPlane3 = 0;
+            // const offsetX3 = ((amountX3 - 1) * separationPlane3) / 2;
+            // const offsetZ3 = ((amountZ3 - 1) * separationPlane3) / 2;
+
+            // for (let i = 0; i < particlesTotal; i++) {
+
+            //     const x = (i % amountX3) * separationPlane3;
+            //     const z = Math.floor(i / amountX3) * separationPlane3;
+            //     const y = (Math.sin(x * 0.5) + Math.sin(z * 0.5)) * 200;
+
+            //     positions.push(x - offsetX3, y, z - offsetZ3);
+
+            // }
+
+            // Real Plane
+
+            const amountX2 = 16;
+            const amountZ2 = 28;
+            const separationPlane2 = 150;
+            const offsetX2 = ((amountX2 - 1) * separationPlane2) / 2;
+            const offsetZ2 = ((amountZ2 - 1) * separationPlane2) / 2;
+
+            for (let i = 0; i < particlesTotal; i++) {
+
+                const x = (i % amountX2) * separationPlane2;
+                const z = Math.floor(i / amountX2) * separationPlane2;
+                const y = (Math.sin(x * 0.5) - Math.sin(z * 0.5)) * 500;
+
+                positions.push(x - offsetX2, y, z - offsetZ2);
+
+            }
+
+
+            // Sphere 1
+
+            const radius3 = 600;
+
+            for (let i = 0; i < particlesTotal; i++) {
+
+                const phi3 = Math.acos(- 1 + (2 * i) / particlesTotal);
+                const theta3 = Math.sqrt(particlesTotal * Math.PI) * phi3;
+
+                positions.push(
+                    radius3 * Math.cos(theta3) * Math.sin(phi3),
+                    radius3 * Math.sin(theta3) * Math.sin(phi3),
+                    (radius3 * Math.cos(phi3)) * 8
+                );
+
+            }
+
+            // Sphere 2
+
+            const radius2 = 1600;
+
+            for (let i = 0; i < particlesTotal; i++) {
+
+                const phi2 = Math.acos(- 1 + (2 * i) / particlesTotal);
+                const theta2 = Math.sqrt(particlesTotal * Math.PI) * phi2;
+
+                positions.push(
+                    radius2 * Math.cos(theta2) * Math.sin(phi2),
+                    radius2 * Math.sin(theta2) * Math.sin(phi2),
+                    radius2 * Math.cos(phi2)
+                );
+
+            }
+
+            // Sphere 3
+
+            const radius = 750;
+
+            for (let i = 0; i < particlesTotal; i++) {
+
+                const phi = Math.acos(- 1 + (2 * i) / particlesTotal);
+                const theta = Math.sqrt(particlesTotal * Math.PI) * phi;
+
+                positions.push(
+                    radius * Math.cos(theta) * Math.sin(phi),
+                    radius * Math.sin(theta) * Math.sin(phi),
+                    radius * Math.cos(phi)
+                );
+
+            }
+
+            // Random
+
+            for (let i = 0; i < particlesTotal; i++) {
+
+                positions.push(
+                    Math.random() * 4000 - 2000,
+                    Math.random() * 4000 - 2000,
+                    Math.random() * 4000 - 2000
+                );
+
+            }
+
+            // Sphere 0
+
+            const radius4 = 800;
+
+            for (let i = 0; i < particlesTotal; i++) {
+
+                const phi4 = Math.acos(- 1 + (2 * i) / particlesTotal);
+                const theta4 = Math.sqrt(particlesTotal * Math.PI) * phi4;
+
+                positions.push(
+                    radius4 * Math.cos(theta4) * Math.sin(phi4) / 10,
+                    radius4 * Math.sin(theta4) * Math.sin(phi4) / 1,
+                    (radius4 * Math.cos(phi4)) * 8
+                );
+
+            }
+
+        }
+
+        function addRender(){
+            renderer = new CSS3DRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('container').appendChild(renderer.domElement);
+
+            controls = new TrackballControls(camera, renderer.domElement);
+
+            window.addEventListener('resize', onWindowResize);
+        }
+
+        function onWindowResize() {
+
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+        }
+
+        // create instance to controll tween
+        let transitionTween;
+        let objectsTween;
+
+        // create controll to check when transition to center was completed
+        let transitionCenterComplete = false;
+        let tweenStatus;
+
+        function transition() {
+
+            if(currentScene !== 'main'){
+                const offset = current * particlesTotal * 3;
+                const duration = 1000;
+                let k = 0;
+
+                console.log(tweenStatus);
+                while(tweenStatus == 'started') return;
+
+                for (let i = 0, j = offset; i < particlesTotal; i++, j += 3) {
+
+                    const object = objects[i];
+                    objectsTween.stop();
+
+                    new TWEEN.Tween(object.position)
+                    .to({
+                        x: 0,
+                        y: 0,
+                        z: 0
+                    }, Math.random() * duration + duration)
+                    .onComplete(function(){
+                        k++;
+                        if(k === particlesTotal)
+                        {
+                            transitionCenterComplete = true;
+                        }
+                        
+                    })
+                    .easing(TWEEN.Easing.Exponential.InOut)
+                    .start();
+                }
+
+            }else{
+                const offset = current * particlesTotal * 3;
+                const duration = 2000;
+
+                let k = 0;
+
+                tweenStatus = 'started';
+
+                for (let i = 0, j = offset; i < particlesTotal; i++, j += 3) {
+
+                    const object = objects[i];
+
+                    objectsTween = new TWEEN.Tween(object.position)
+                    .to({
+                        x: positions[j],
+                        y: positions[j + 1],
+                        z: positions[j + 2]
+                    }, Math.random() * duration + duration)
+                    .onComplete(function(){
+                        k++;
+                        if(k === particlesTotal)
+                        {
+                            tweenStatus = 'completed';
+                        }
+                        
+                    })
+                    .easing(TWEEN.Easing.Exponential.InOut)
+                    .start();
+
+                }
+
+                transitionTween = new TWEEN.Tween(this)
+                .to({}, duration * 3)
+                .onComplete(transition)
+                .start();
+
+                current = (current + 1) % 6;
+            }
+            
+        }
+
+        $(document).on('click touchend', '.egg-main-3d', function(e){
+
+            console.log('clicou');
+            transitionCenter = true;
+            currentScene = 'potency';
+            transitionTween.stop();
+            transition();
+            // animate();
+        });
+
+        function animate() {
+            // requestAnimationFrame(animate);
+            // if(currentScene === 'main'){
+            //     requestAnimationFrame(animate);
+            // }else if (transitionCenter === true){
+            //     requestAnimationFrame(animate);
+            //     handlePotencyContentOpening();
+            //     return;
+            // }else{
+            //     return;
+            // }
+
+            if(currentScene == 'fast-track') return;
+
+            if(!transitionCenterComplete){
+                requestAnimationFrame(animate);
+            }else{
+                if(currentScene ==  'potency'){
+                    handlePotencyContentOpening();
+                }
+                return;
+            }
+            
+
+            TWEEN.update();
+            controls.update();
+
+            const time = performance.now();
+
+            for (let i = 0, l = objects.length; i < l; i++) {
+
+                const object = objects[i];
+                const scale = Math.sin((Math.floor(object.position.x) + time) * 0.002) * 0.2 + 1;
+                object.scale.set(scale, scale, scale);
+
+            }
+
+            renderer.render(scene, camera);
+
+        }
+
+        /// FAST TRACK
+
+        const sceneFastTrack = new THREE.Scene();
+        const cameraFastTrack = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, .1, 1000);
+        const rendererFastTrack = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        rendererFastTrack.setPixelRatio(window.devicePixelRatio);
+
+        let mainDot;
+
+        rendererFastTrack.setSize(window.innerWidth, window.innerHeight);
+
+        document.getElementById('fast-track').appendChild(rendererFastTrack.domElement);
+
+        cameraFastTrack.position.set(0, 0, 10);
+        cameraFastTrack.lookAt(sceneFastTrack.position);
+
+        // create centered logo
+        const logoTexture = new THREE.TextureLoader().load('./assets/fast-track/sprite.png');
+        const logoGeometry = new THREE.PlaneGeometry(2, 2);
+        const logoMaterial = new THREE.MeshBasicMaterial({ map: logoTexture, color: 0xffffff, side: THREE.DoubleSide, depthWrite: false, alphaTest: 0.5 });
+        logoMaterial.map.minFilter = THREE.LinearFilter;
+        const logoFastTrack = new THREE.Mesh(logoGeometry, logoMaterial);
+        sceneFastTrack.add(logoFastTrack);
+
+        let positionsFastTrack = [];
+
+        // create positions
+        for (let i = 0; i < 80; i++) {
+            const x = Math.random() * 8 - Math.random() * 8;
+            const y = Math.random() * 8 - Math.random() * 8;
+            const z = Math.random() * 20 - Math.random() * 20;
+
+            let position =
+            {
+                'x': x,
+                'y': y,
+                'z': z
+            };
+
+            positionsFastTrack.push(position);
+        }
+
+        let points = [];
+        let sphereGroup = new THREE.Object3D();
+
+        for (let i = 0; i < positionsFastTrack.length; i++) {
+            let map;
+            let opacity = 1;
+            let size = .4;
+
+            if (i % 4 == 0) {
+                map = new THREE.TextureLoader().load('./assets/fast-track/egg.png');
+                opacity = 0.5;
+            }
+            else {
+                opacity = 0.5;
+                size = .09;
+                map = new THREE.TextureLoader().load('./assets/fast-track/sphere.png');
+
+            }
+
+            const material = new THREE.SpriteMaterial({ map: map, color: 0xffffff, depthWrite: false, alphaTest: 0.5 });
+            material.map.minFilter = THREE.LinearFilter;
+            material.opacity = opacity;
+            const sprite = new THREE.Sprite(material);
+            sprite.position.set(positionsFastTrack[i].x, positionsFastTrack[i].y, positionsFastTrack[i].z);
+            sprite.scale.set(size, size, size);
+            points.push(sprite.position);
+            sphereGroup.add(sprite);
+        }
+
+        var lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+        var line = new THREE.Line(lineGeometry, new THREE.LineBasicMaterial({ color: 0xffffff, opacity: .5, transparent: true }));
+        sceneFastTrack.add(line);
+
+        sceneFastTrack.add(sphereGroup);
+
+        let control = new function () {
+            this.rotSpeed = .002;
+            this.scale = 1;
+        };
+
+        function animateFastTrack() {
+            if(currentScene === 'fast-track'){
+                requestAnimationFrame(animateFastTrack);
+            }else{
+                return;
+            }
+
+            logoFastTrack.rotation.y += .008;
+            var x = cameraFastTrack.position.x;
+            var z = cameraFastTrack.position.z;
+            cameraFastTrack.position.x = x * Math.cos(control.rotSpeed) + z * Math.sin(control.rotSpeed);
+            cameraFastTrack.position.z = z * Math.cos(control.rotSpeed) - x * Math.sin(control.rotSpeed);
+            cameraFastTrack.lookAt(sceneFastTrack.position);
+
+            rendererFastTrack.render(sceneFastTrack, cameraFastTrack);
+        }
+
+        // animateFastTrack();
+
+        window.addEventListener('resize', onWindowResizeFastTrack);
+
+        function onWindowResizeFastTrack() {
+            cameraFastTrack.aspect = window.innerWidth / window.innerHeight;
+            cameraFastTrack.updateProjectionMatrix();
+            rendererFastTrack.setSize(window.innerWidth, window.innerHeight);
+        }
+
+    });
+    
+
+
+    </script>
+
+</body>
+
+</html>
