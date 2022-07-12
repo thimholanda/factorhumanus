@@ -289,6 +289,16 @@ function isMobileDevice()
 
     <a style="display: none;" class="btn-fast-track" href="#"><img width="60" height="78" src="./assets/btn-fast-track.png" alt="Fast Track"></a>
 
+    <div class="modal-lgpd-container">
+        <div class="modal-lgpd" style="display: none;">
+            <h6 class="modal-lgpd-h6">Esse site usa cookies</h6>
+            <p class="modal-lgpd-p">Nós armazenamos dados temporariamente para melhorar a sua experiência de navegação. Ao continuar, você concorda com nossa <a href="./privacidade.html" target="_blank">política de privacidade</a>.</p>
+            <div class="text-right">
+                <a class="btn btn-primary btn-lgpd modal-lgpd-btn" href="#">ACEITO TODOS OS COOKIES</a>
+            </div>
+        </div>
+    </div>
+
     <script src="https://vjs.zencdn.net/7.18.0/video.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script type="module" src="./assets/jquery.reflection.js"></script>

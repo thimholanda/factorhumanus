@@ -50,6 +50,31 @@ $(window).on("load", () => {
 });
 
 $("document").ready(function () {
+  //LGPD
+
+  let checkLGPD = localStorage.getItem("lgpd-fhs");
+
+  if (!checkLGPD) {
+    $(".modal-lgpd").fadeIn();
+  }
+
+  $(document).on("click", ".btn-lgpd", function () {
+    localStorage.setItem("lgpd-fhs", "true");
+    $(".modal-lgpd").fadeOut();
+  });
+
+  function isFormInvalid(form, event) {
+    form[0].classList.add("was-validated");
+    if (form[0].checkValidity() === false) {
+      event.stopPropagation();
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  //LGPD
+
   if (isEnglish) {
     $(".btn-contact").html("SEND");
     $(".txt-email").html("contactus@factorhumanus.com");

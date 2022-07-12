@@ -267,6 +267,15 @@ const translateStrings = [
   {
     "txt-ft11": `Contact`,
   },
+  {
+    "modal-lgpd-h6": `This website uses cookies`,
+  },
+  {
+    "modal-lgpd-p": `We temporarily store data to improve your browsing experience. By continuing, you agree to our <a href="./privacy.html" target="_blank">privacy policy</a>.`,
+  },
+  {
+    "modal-lgpd-btn": `I ACCEPT ALL COOKIES`,
+  },
 ];
 
 export default translateStrings;

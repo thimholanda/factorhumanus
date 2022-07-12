@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -6,6 +7,61 @@
     font-size: 28px;
     line-height: 42px;
     color: white;
+}
+
+.modal-lgpd-container{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
+  z-index: 999999999999;
+}
+
+  
+.modal-lgpd{
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 1px 1px 10px 5px rgba(black, .1);
+  z-index: 100;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+
+.modal-lgpd h6{
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    color: #1f3a61 !important;
+    font-size: .8rem;
+    line-height: .9rem;
+    margin-bottom: 10px;
+}
+
+.modal-lgpd p{
+    color: #777;
+    font-weight: normal;
+    font-size: .6rem !important;
+    line-height: .7rem !important;
+    text-decoration: none !important;
+    margin-bottom: 10px !important;
+}
+
+.modal-lgpd a{
+    color: #1f3a61 !important;
+    text-decoration: none !important;
+    font-size: .6rem !important;
+    line-height: .7rem !important;
+    font-family: 'Museo Sans 500' !important;
+}
+
+.modal-lgpd .btn-lgpd{
+    background: #1f3a61 !important;
+    color: white !important;
+    padding: 4px 10px !important;
+    border-radius: 10px;
+    /* margin-top: 20px !important; */
 }
 
 body {
@@ -23,7 +79,7 @@ body {
     height: 100vh;
     /* background: url(./g/background.jpg) no-repeat center; */
     background-size: cover;
-    z-index: 9999999;
+    z-index: 9999998;
 
 }
 
@@ -32,6 +88,7 @@ body {
     right: 20px;
     bottom: 20px;
     cursor: pointer;
+    z-index: 999999999;
 }
 
 .btn-fast-track img {
@@ -58,7 +115,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100vh;
-    z-index: 99999999;
+    z-index: 99999998;
 }
 
 #fast-track-menu nav {
@@ -1695,13 +1752,13 @@ body {
     width: 100%;
     height: 100%;
     background-color: white;
-    z-index: 9999999999;
+    z-index: 999999999999;
     align-items: center;
     justify-content: center;
 }
 
 .page-device-orientation{
-    z-index: 999999999;
+    z-index: 99999999999;
 }
 
 .page-loader img{
